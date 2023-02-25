@@ -1,0 +1,29 @@
+version: "3.7"
+
+services: 
+  db:
+    image: postgres
+    container_name: chat_db
+    restart: always
+    ports: 
+      - 5432:5432
+    environment: 
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=senhabonita
+      - POSTGRES_DB=chat_real_time
+    volumes: 
+      - pgdata:/data/postgres
+  app:
+      build: .
+      container_name: chat_real_time
+      ports: 
+        - 3000:3000
+      volumes: 
+        - .:/usr/app
+      links: 
+        - db
+      depends_on: 
+        - db
+volumes: 
+  pgdata:
+    driver: local
