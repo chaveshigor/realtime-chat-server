@@ -3,6 +3,6 @@ import FindOrCreateController from '../domains/chat/controllers/findOrCreateCont
 
 const chatRouter = express.Router();
 
-chatRouter.post('/', new FindOrCreateController().handle);
+chatRouter.post('/:chatId', new FindOrCreateController().handle);
 
 export default chatRouter;
