@@ -21,9 +21,9 @@ class CreateOrCreateUsecase extends ApplicationUseCase implements ApplicationIUs
       await chatRepository.save(new_chat);
 
       (params.member_ids as Array<number>).forEach(async userId => {
-        const user = await userRepository.findOneBy({ id: userId });
-        (user as User).chats = [new_chat];
-        await userRepository.save(user as User);
+        const user = await userRepository.findOne({where: {id: userId}, relations: {chats: true} }) as User;
+        user.chats = [...user.chats, new_chat];
+        await userRepository.save(user);
       });
 
       return new_chat;
