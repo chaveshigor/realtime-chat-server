@@ -7,9 +7,9 @@ class FindOrCreateChatController implements ApplicationIController {
     const { userId } = req.params
 
     const usecase = new GettAllChatsUsecase();
-    const new_chat = await usecase.run(Number(userId));
+    const allChats = await usecase.run(Number(userId));
 
-    res.status(201).json(new_chat);
+    res.status(200).json(allChats);
   }
 }
 
