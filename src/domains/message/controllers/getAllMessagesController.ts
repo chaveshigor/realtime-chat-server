@@ -7,7 +7,7 @@ class GetAllMessagesController implements ApplicationIController {
     const { chatId } = req.params;
 
     const usecase = new GetAllMessagesUsecase();
-    const messages = await usecase.run({ chatId: Number(chatId) });
+    const messages = await usecase.run(Number(chatId));
 
     res.status(200).json(messages);
   }

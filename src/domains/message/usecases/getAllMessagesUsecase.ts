@@ -3,17 +3,12 @@ import ApplicationUseCase from "../../../shared/classes/applicationUsecase";
 import { Message } from "../../../entities/message";
 import { Chat } from "../../../entities/chat";
 
-type MessageParams = {
-  chatId: number
-}
-
 class GetAllMessagesUsecase extends ApplicationUseCase implements ApplicationIUsecase {
-  async run(params: MessageParams): Promise<Message[]> {
+  async run(chatId: number): Promise<Message[]> {
     const chatRepository = this.getRepository(Chat);
-    const messageRepository = this.getRepository(Message);
 
-    const chat = await chatRepository.findOneBy({id: params.chatId}) as Chat;
-    const messages = messageRepository.find({relations: {user: true}, where: {chat: chat}});
+    const chat = await chatRepository.findOne({ relations: { messages: true }, where: { id: chatId } }) as Chat;
+    const messages = chat.messages
 
     return messages;
   };
