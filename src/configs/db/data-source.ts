@@ -1,11 +1,9 @@
 import "reflect-metadata";
-import * as dotenv from 'dotenv';
 
 import { DataSource } from "typeorm";
 import { User } from "../../entities/user";
 import { Message } from "../../entities/message";
 import { Chat } from "../../entities/chat";
-dotenv.config();
 
 export const AppDataSource = new DataSource({
   type: "postgres",
