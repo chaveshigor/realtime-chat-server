@@ -1,16 +1,14 @@
 import { User } from "../../../entities/user";
 import { ApplicationIUsecase } from "../../../shared/interfaces/usecase";
 import ApplicationUseCase from "../../../shared/classes/applicationUsecase";
-import { AppDataSource } from "../../../configs/db/data-source";
 
 type UserParams = {
   name: string,
   username: string
-}
+};
 
-class CreateOrCreateUsecase extends ApplicationUseCase implements ApplicationIUsecase {
+class CreateUserUsecase extends ApplicationUseCase implements ApplicationIUsecase {
   async run(params: UserParams): Promise<User> {
-    AppDataSource.getRepository(User)
     const repository = this.getRepository(User);
 
     const user = await repository.findOneBy({ username: params.username });
@@ -22,8 +20,7 @@ class CreateOrCreateUsecase extends ApplicationUseCase implements ApplicationIUs
     await repository.save(new_user);
 
     return new_user;
-  }
-  
-}
+  };
+};
 
-export default CreateOrCreateUsecase;
+export default CreateUserUsecase;

@@ -1,8 +1,10 @@
 import express from 'express';
-import FindOrCreateController from '../domains/user/controllers/findOrCreateController';
+import CreateUserController from '../domains/user/controllers/createUserController';
+import FindUserCOntroller from '../domains/user/controllers/findUserController';
 
 const userRouter = express.Router();
 
-userRouter.post('/', new FindOrCreateController().handle);
+userRouter.get('/:username', new FindUserCOntroller().handle);
+userRouter.post('/new', new CreateUserController().handle);
 
 export default userRouter;

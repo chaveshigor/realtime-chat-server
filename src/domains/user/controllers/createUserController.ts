@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
 import { ApplicationIController } from "../../../shared/interfaces/controller";
-import FindOrCreateUsecase from "../usecases/findOrCreateUsecase";
+import CreateUserUsecase from "../usecases/createUserUsecase";
 
 class CreateUserController implements ApplicationIController {
   async handle(req: Request, res: Response) {
     const { name, username } = req.body;
 
-    const usecase = new FindOrCreateUsecase();
-    const new_user = await usecase.run({ name, username });
+    const usecase = new CreateUserUsecase();
+    const newUser = await usecase.run({ name, username });
 
-    res.status(201).json(new_user);
-  }
-}
+    res.status(201).json(newUser);
+  };
+};
 
 export default CreateUserController;

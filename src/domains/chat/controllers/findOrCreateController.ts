@@ -4,10 +4,10 @@ import FindOrCreateUsecase from "../usecases/findOrCreateUsecase";
 
 class FindOrCreateChatController implements ApplicationIController {
   async handle(req: Request, res: Response) {
-    const { chat_id, member_ids } = req.body;
+    const { chatId, member_ids } = req.body;
 
     const usecase = new FindOrCreateUsecase();
-    const new_chat = await usecase.run({ chat_id, member_ids });
+    const new_chat = await usecase.run({ chatId, member_ids });
 
     res.status(201).json(new_chat);
   }
