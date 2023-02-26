@@ -1,10 +1,10 @@
-import { Entity, Column, PrimaryColumn, OneToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm"
 import { Message } from "./message"
 
 @Entity()
 export class Chat {
-  @PrimaryColumn()
-  id: string
+  @PrimaryGeneratedColumn()
+  id: number
 
   @OneToMany(() => Message, (message) => message.chat)
   messages: Message[]

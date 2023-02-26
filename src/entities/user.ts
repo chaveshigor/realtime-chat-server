@@ -1,16 +1,17 @@
-import { Entity, Column, PrimaryColumn, OneToMany, ManyToMany, JoinTable } from "typeorm"
+import { Entity, Column, OneToMany, ManyToMany, JoinTable, PrimaryGeneratedColumn, Unique } from "typeorm"
 import { Chat } from "./chat"
 import { Message } from "./message"
 
 @Entity()
+@Unique(['username'])
 export class User {
-  @PrimaryColumn()
-  id: string
+  @PrimaryGeneratedColumn()
+  id: number
 
   @Column()
   name: string
 
-  @Column()
+  @Column({name: 'username'})
   username: string
 
   @OneToMany(() => Message, (message) => message.user)
