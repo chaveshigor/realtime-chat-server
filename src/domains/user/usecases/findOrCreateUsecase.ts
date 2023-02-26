@@ -8,22 +8,22 @@ type UserParams = {
   username: string
 }
 
-class CreateUsecase extends ApplicationUseCase implements ApplicationIUsecase {
-  async run(params: UserParams): Promise<User | null> {
+class CreateOrCreateUsecase extends ApplicationUseCase implements ApplicationIUsecase {
+  async run(params: UserParams): Promise<User> {
     AppDataSource.getRepository(User)
     const repository = this.getRepository(User);
 
-    const user = await repository.findOneBy({ username: params.username })
+    const user = await repository.findOneBy({ username: params.username });
     if(user) {
-      return null;
+      return user;
     }
 
     const new_user = repository.create(params);
-    await repository.save(new_user)
+    await repository.save(new_user);
 
     return new_user;
   }
   
 }
 
-export default CreateUsecase;
+export default CreateOrCreateUsecase;
