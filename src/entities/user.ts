@@ -23,7 +23,7 @@ export class User {
   @OneToMany(() => Message, (message) => message.user)
   messages: Message[]
 
-  @ManyToMany(() => Chat)
+  @ManyToMany(() => Chat, (chat) => chat.users)
   @JoinTable()
   chats: Chat[]
 }

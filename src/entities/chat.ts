@@ -16,6 +16,6 @@ export class Chat {
   @OneToMany(() => Message, (message) => message.chat)
   messages: Message[]
 
-  @ManyToMany(() => User)
+  @ManyToMany(() => User, (user) => user.chats)
   users: User[]
 }
