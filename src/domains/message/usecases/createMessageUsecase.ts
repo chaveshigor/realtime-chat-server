@@ -20,7 +20,11 @@ class CreateOrCreateUsecase extends ApplicationUseCase implements ApplicationIUs
     newMessage.user = await userRepository.findOneBy({id: params.userId}) as User
     newMessage.chat = await chatRepository.findOneBy({id: params.chatId}) as Chat
 
+    const chat = await chatRepository.findOneBy({id: params.chatId}) as Chat;
+    chat.lastMessage = newMessage;
+
     await messageRepository.save(newMessage);
+    await chatRepository.save(chat);
 
     return newMessage;
   };

@@ -8,8 +8,9 @@ class GetAllChatsUsecase extends ApplicationUseCase implements ApplicationIUseca
     const userRepository = this.getRepository(User);
     const user = await userRepository.findOne({
       where: {id: userId},
-      relations: ['chats', 'chats.messages', 'chats.users', 'chats.messages.user'],
-      order: {chats: {messages: {createdAt: "ASC"}}}}) as User;
+      relations: ['chats', 'chats.lastMessage', 'chats.users', 'chats.messages.user'],
+      order: {chats: {lastMessage: {createdAt: 'DESC'}}}
+      }) as User;
 
     return user?.chats;
   };

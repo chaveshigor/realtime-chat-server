@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, OneToMany, UpdateDateColumn, CreateDateColumn, ManyToMany } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, OneToMany, UpdateDateColumn, CreateDateColumn, ManyToMany, Column, OneToOne, JoinColumn } from "typeorm"
 import { Message } from "./message"
 import { User } from "./user"
 
@@ -6,6 +6,10 @@ import { User } from "./user"
 export class Chat {
   @PrimaryGeneratedColumn()
   id: number
+
+  @OneToOne(() => Message)
+  @JoinColumn()
+  lastMessage: Message
 
   @CreateDateColumn()
   createdAt: Date
