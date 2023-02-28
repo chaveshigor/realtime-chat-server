@@ -1,10 +1,11 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-import app from './app';
+import { server } from './infra/io';
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
+server.listen(port, () => {
+  console.log(`Websocket listening on port ${port}`);
   console.log(`Listening on port ${port}`);
 });
