@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, OneToMany, UpdateDateColumn, CreateDateColumn, ManyToMany, Column, OneToOne, JoinColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, OneToMany, UpdateDateColumn, CreateDateColumn, ManyToMany, OneToOne, JoinColumn, Column } from "typeorm"
 import { Message } from "./message"
 import { User } from "./user"
 
@@ -22,4 +22,7 @@ export class Chat {
 
   @ManyToMany(() => User, (user) => user.chats)
   users: User[]
+
+  @Column({ default: false })
+  isGroup: boolean
 }
