@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import { Request, Response } from 'express';
 import { ApplicationIController } from '../../../shared/interfaces/controller';
+import UserSerializer from '../serializers/userSerializer';
 import CreateUserUsecase from '../usecases/createUserUsecase';
 
 class CreateUserController implements ApplicationIController {
@@ -10,7 +11,7 @@ class CreateUserController implements ApplicationIController {
     const usecase = new CreateUserUsecase();
     const newUser = await usecase.run({ name, username });
 
-    res.status(201).json(newUser);
+    res.status(201).json(new UserSerializer(newUser).serialize());
   }
 }
 

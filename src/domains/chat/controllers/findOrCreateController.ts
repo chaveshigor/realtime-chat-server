@@ -9,7 +9,6 @@ class FindOrCreateChatController implements ApplicationIController {
     const { memberIds } = req.body;
 
     const usecase = new FindOrCreateUsecase();
-    // eslint-disable-next-line camelcase
     const newChat = await usecase.run({ chatId: Number(chatId), memberIds });
 
     res.status(201).json(new ChatSerializer(newChat).serialize());

@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
+import User from '../../../entities/user';
 import { ApplicationIController } from '../../../shared/interfaces/controller';
+import UserSerializer from '../serializers/userSerializer';
 import FindUserUsecase from '../usecases/findUserUsecase';
 
 class FindUserCOntroller implements ApplicationIController {
@@ -7,9 +9,9 @@ class FindUserCOntroller implements ApplicationIController {
     const { username } = req.params;
 
     const usecase = new FindUserUsecase();
-    const user = await usecase.run({ username });
+    const user = (await usecase.run({ username })) as User;
 
-    res.status(200).json(user);
+    res.status(200).json(new UserSerializer(user).serialize());
   }
 }
 
