@@ -14,7 +14,12 @@ class CreateOrCreateUsecase extends ApplicationUseCase implements ApplicationIUs
     const userRepository = this.getRepository(User);
 
     if(params.chatId) {
-      const chat = await chatRepository.findOne({where:{ id: params.chatId }, relations: {messages: true}});
+      const chat = await chatRepository.findOne(
+        {
+          where:{ id: params.chatId },
+          relations: { messages: true, lastMessage: true }
+        }
+      );
       return chat as Chat;
     }else {
       const new_chat = chatRepository.create();

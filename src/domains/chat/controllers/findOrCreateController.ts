@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { ApplicationIController } from "../../../shared/interfaces/controller";
+import ChatSerializer from "../serializers/chatSerializer";
 import FindOrCreateUsecase from "../usecases/findOrCreateUsecase";
 
 class FindOrCreateChatController implements ApplicationIController {
@@ -8,9 +9,9 @@ class FindOrCreateChatController implements ApplicationIController {
     const { member_ids } = req.body;
 
     const usecase = new FindOrCreateUsecase();
-    const new_chat = await usecase.run({ chatId: Number(chatId), member_ids });
+    const newChat = await usecase.run({ chatId: Number(chatId), member_ids });
 
-    res.status(201).json(new_chat);
+    res.status(201).json(new ChatSerializer(newChat).serialize());
   }
 }
 
