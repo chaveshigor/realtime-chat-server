@@ -1,29 +1,39 @@
-import { Entity, Column, OneToMany, ManyToMany, JoinTable, PrimaryGeneratedColumn, Unique, CreateDateColumn, UpdateDateColumn } from "typeorm"
-import { Chat } from "./chat"
-import { Message } from "./message"
+import {
+  Entity,
+  Column,
+  OneToMany,
+  ManyToMany,
+  JoinTable,
+  PrimaryGeneratedColumn,
+  Unique,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { Chat } from './chat';
+import { Message } from './message';
 
 @Entity()
 @Unique(['username'])
 export class User {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column()
-  name: string
+  name: string;
 
-  @Column({name: 'username'})
-  username: string
+  @Column({ name: 'username' })
+  username: string;
 
   @CreateDateColumn()
-  createdAt: Date
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date
+  updatedAt: Date;
 
-  @OneToMany(() => Message, (message) => message.user)
-  messages: Message[]
+  @OneToMany(() => Message, message => message.user)
+  messages: Message[];
 
-  @ManyToMany(() => Chat, (chat) => chat.users)
+  @ManyToMany(() => Chat, chat => chat.users)
   @JoinTable()
-  chats: Chat[]
+  chats: Chat[];
 }

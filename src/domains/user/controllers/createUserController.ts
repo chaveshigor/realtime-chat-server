@@ -1,6 +1,7 @@
-import { Request, Response } from "express";
-import { ApplicationIController } from "../../../shared/interfaces/controller";
-import CreateUserUsecase from "../usecases/createUserUsecase";
+/* eslint-disable class-methods-use-this */
+import { Request, Response } from 'express';
+import { ApplicationIController } from '../../../shared/interfaces/controller';
+import CreateUserUsecase from '../usecases/createUserUsecase';
 
 class CreateUserController implements ApplicationIController {
   async handle(req: Request, res: Response) {
@@ -10,7 +11,7 @@ class CreateUserController implements ApplicationIController {
     const newUser = await usecase.run({ name, username });
 
     res.status(201).json(newUser);
-  };
-};
+  }
+}
 
 export default CreateUserController;

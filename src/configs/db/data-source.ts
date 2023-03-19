@@ -1,12 +1,12 @@
-import "reflect-metadata";
+import 'reflect-metadata';
 
-import { DataSource } from "typeorm";
-import { User } from "../../entities/user";
-import { Message } from "../../entities/message";
-import { Chat } from "../../entities/chat";
+import { DataSource } from 'typeorm';
+import { User } from '../../entities/user';
+import { Message } from '../../entities/message';
+import { Chat } from '../../entities/chat';
 
-export const AppDataSource = new DataSource({
-  type: "postgres",
+const AppDataSource = new DataSource({
+  type: 'postgres',
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
   username: process.env.DB_USER,
@@ -18,3 +18,5 @@ export const AppDataSource = new DataSource({
   migrations: [],
   subscribers: [],
 });
+
+export default AppDataSource;

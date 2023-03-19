@@ -1,5 +1,5 @@
-import { Chat } from "../../../entities/chat";
-import ApplicationSerializer from "../../../lib/serializer";
+import { Chat } from '../../../entities/chat';
+import ApplicationSerializer from '../../../lib/serializer';
 
 class ChatSerializer extends ApplicationSerializer {
   constructor(chat: Chat) {
@@ -9,4 +9,3 @@ class ChatSerializer extends ApplicationSerializer {
 }
 
 export default ChatSerializer;
-

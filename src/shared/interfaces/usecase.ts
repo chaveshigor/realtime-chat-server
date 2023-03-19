@@ -1,3 +1,3 @@
 export interface ApplicationIUsecase {
-  run(params: Object | number | null): any;
+  run(params: object | number | null): any;
 }

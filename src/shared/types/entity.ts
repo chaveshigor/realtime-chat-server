@@ -1,6 +1,5 @@
 type Entity = {
-  id: number
-}
+  id: number;
+};
 
 export default Entity;
-

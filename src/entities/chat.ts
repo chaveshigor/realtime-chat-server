@@ -1,28 +1,38 @@
-import { Entity, PrimaryGeneratedColumn, OneToMany, UpdateDateColumn, CreateDateColumn, ManyToMany, OneToOne, JoinColumn, Column } from "typeorm"
-import { Message } from "./message"
-import { User } from "./user"
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  UpdateDateColumn,
+  CreateDateColumn,
+  ManyToMany,
+  OneToOne,
+  JoinColumn,
+  Column,
+} from 'typeorm';
+import { Message } from './message';
+import { User } from './user';
 
 @Entity()
 export class Chat {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @OneToOne(() => Message)
   @JoinColumn()
-  lastMessage: Message
+  lastMessage: Message;
 
   @CreateDateColumn()
-  createdAt: Date
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date
+  updatedAt: Date;
 
-  @OneToMany(() => Message, (message) => message.chat)
-  messages: Message[]
+  @OneToMany(() => Message, message => message.chat)
+  messages: Message[];
 
-  @ManyToMany(() => User, (user) => user.chats)
-  users: User[]
+  @ManyToMany(() => User, user => user.chats)
+  users: User[];
 
   @Column({ default: false })
-  isGroup: boolean
+  isGroup: boolean;
 }

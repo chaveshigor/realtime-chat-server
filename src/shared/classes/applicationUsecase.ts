@@ -1,8 +1,11 @@
-import { EntityTarget, ObjectLiteral, Repository } from "typeorm";
-import { AppDataSource } from "../../configs/db/data-source";
+import { EntityTarget, ObjectLiteral, Repository } from 'typeorm';
+import AppDataSource from '../../configs/db/data-source';
 
 class ApplicationController {
-  getRepository<T extends ObjectLiteral>(entity: EntityTarget<T>): Repository<T> {
+  // eslint-disable-next-line class-methods-use-this
+  getRepository<T extends ObjectLiteral>(
+    entity: EntityTarget<T>,
+  ): Repository<T> {
     return AppDataSource.getRepository<T>(entity);
   }
 }
