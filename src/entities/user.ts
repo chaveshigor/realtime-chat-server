@@ -9,12 +9,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Chat } from './chat';
-import { Message } from './message';
+import Chat from './chat';
+import Message from './message';
 
 @Entity()
 @Unique(['username'])
-export class User {
+class User {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -37,3 +37,5 @@ export class User {
   @JoinTable()
   chats: Chat[];
 }
+
+export default User;

@@ -1,4 +1,4 @@
-import { User } from '../../../entities/user';
+import User from '../../../entities/user';
 import { ApplicationIUsecase } from '../../../shared/interfaces/usecase';
 import ApplicationUseCase from '../../../shared/classes/applicationUsecase';
 
@@ -19,10 +19,10 @@ class CreateUserUsecase
       return user;
     }
 
-    const new_user = repository.create(params);
-    await repository.save(new_user);
+    const newUser = repository.create(params);
+    await repository.save(newUser);
 
-    return new_user;
+    return newUser;
   }
 }
 

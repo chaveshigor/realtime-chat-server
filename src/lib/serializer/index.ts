@@ -1,9 +1,11 @@
+import Entity from '../../shared/types/entity';
+
 class ApplicationSerializer {
   attributes = [] as string[];
 
   entity;
 
-  constructor(entity: any) {
+  constructor(entity: Entity) {
     this.entity = entity;
   }
 

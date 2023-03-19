@@ -1,4 +1,4 @@
-import { Chat } from '../../../entities/chat';
+import Chat from '../../../entities/chat';
 import ApplicationSerializer from '../../../lib/serializer';
 
 class ChatSerializer extends ApplicationSerializer {

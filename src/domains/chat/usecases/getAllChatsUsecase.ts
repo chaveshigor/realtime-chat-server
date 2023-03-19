@@ -1,7 +1,7 @@
-import { Chat } from '../../../entities/chat';
+import Chat from '../../../entities/chat';
 import { ApplicationIUsecase } from '../../../shared/interfaces/usecase';
 import ApplicationUseCase from '../../../shared/classes/applicationUsecase';
-import { User } from '../../../entities/user';
+import User from '../../../entities/user';
 
 class GetAllChatsUsecase
   extends ApplicationUseCase

@@ -1,11 +1,11 @@
-import { Chat } from '../../../entities/chat';
+import Chat from '../../../entities/chat';
 import { ApplicationIUsecase } from '../../../shared/interfaces/usecase';
 import ApplicationUseCase from '../../../shared/classes/applicationUsecase';
-import { User } from '../../../entities/user';
+import User from '../../../entities/user';
 
 type ChatParams = {
   chatId: number | null;
-  member_ids: Array<number> | null;
+  memberIds: Array<number> | null;
 };
 
 class CreateOrCreateUsecase
@@ -26,7 +26,7 @@ class CreateOrCreateUsecase
     const newChat = chatRepository.create();
     await chatRepository.save(newChat);
 
-    (params.member_ids as Array<number>).forEach(async userId => {
+    (params.memberIds as Array<number>).forEach(async userId => {
       const user = (await userRepository.findOne({
         where: { id: userId },
         relations: { chats: true },

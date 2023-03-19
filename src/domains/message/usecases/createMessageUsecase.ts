@@ -1,8 +1,8 @@
 import { ApplicationIUsecase } from '../../../shared/interfaces/usecase';
 import ApplicationUseCase from '../../../shared/classes/applicationUsecase';
-import { Message } from '../../../entities/message';
-import { User } from '../../../entities/user';
-import { Chat } from '../../../entities/chat';
+import Message from '../../../entities/message';
+import User from '../../../entities/user';
+import Chat from '../../../entities/chat';
 
 type MessageParams = {
   content: string;

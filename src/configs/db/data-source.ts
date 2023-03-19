@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 
 import { DataSource } from 'typeorm';
-import { User } from '../../entities/user';
-import { Message } from '../../entities/message';
-import { Chat } from '../../entities/chat';
+import User from '../../entities/user';
+import Message from '../../entities/message';
+import Chat from '../../entities/chat';
 
 const AppDataSource = new DataSource({
   type: 'postgres',

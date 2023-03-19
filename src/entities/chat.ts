@@ -9,11 +9,11 @@ import {
   JoinColumn,
   Column,
 } from 'typeorm';
-import { Message } from './message';
-import { User } from './user';
+import Message from './message';
+import User from './user';
 
 @Entity()
-export class Chat {
+class Chat {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -36,3 +36,5 @@ export class Chat {
   @Column({ default: false })
   isGroup: boolean;
 }
+
+export default Chat;

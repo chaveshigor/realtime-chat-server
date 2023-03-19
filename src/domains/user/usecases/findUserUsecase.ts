@@ -1,4 +1,4 @@
-import { User } from '../../../entities/user';
+import User from '../../../entities/user';
 import { ApplicationIUsecase } from '../../../shared/interfaces/usecase';
 import ApplicationUseCase from '../../../shared/classes/applicationUsecase';
 

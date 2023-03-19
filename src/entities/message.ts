@@ -6,11 +6,11 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Chat } from './chat';
-import { User } from './user';
+import Chat from './chat';
+import User from './user';
 
 @Entity()
-export class Message {
+class Message {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -29,3 +29,5 @@ export class Message {
   @UpdateDateColumn()
   updatedAt: Date;
 }
+
+export default Message;

@@ -1,6 +1,6 @@
 import { ApplicationIUsecase } from '../../../shared/interfaces/usecase';
 import ApplicationUseCase from '../../../shared/classes/applicationUsecase';
-import { Message } from '../../../entities/message';
+import Message from '../../../entities/message';
 
 class GetAllMessagesUsecase
   extends ApplicationUseCase
