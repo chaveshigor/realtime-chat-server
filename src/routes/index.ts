@@ -6,7 +6,6 @@ import messageRouter from './message';
 const router = express.Router();
 
 router.use('/users', userRouter);
-router.use('/chats', chatRouter);
-router.use('/chats/:chatId/messages', messageRouter);
+router.use('/users/:userId/chats', chatRouter);
 
 export default router;
